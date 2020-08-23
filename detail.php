@@ -149,6 +149,7 @@ $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 $preference->items = array($item);
 $preference->save();
+echo $preference->id;
 ?>
                                    
                                     
