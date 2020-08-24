@@ -133,9 +133,11 @@
 <?php
 // SDK de Mercado Pago
 require __DIR__ .  '/vendor/autoload.php';
+echo 'Debug';
 
 // Agregamos credenciales 
 MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
+echo 'Debug';
 
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
@@ -150,7 +152,8 @@ $preference->payment_methods = array(
   ),
   "installments" => 6
 );
-echo 'Debug';
+
+
 // Crea un ítem en la preferencia y seteamos detalle del producto seleccionado
 $item = new MercadoPago\Item();
 $item->id = '1234';
@@ -187,7 +190,7 @@ $preference->save();
                                     
 				<form action="/procesar-pago" method="POST">
 				  <script
-				   src="https://www.mercadopago.com.uy/integrations/v1/web-payment-checkout.js"
+				   src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
 				   data-preference-id="<?php echo $preference->id; ?>">
 				  </script>
 				</form>
