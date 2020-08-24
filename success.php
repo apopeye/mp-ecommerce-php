@@ -1,3 +1,12 @@
+
+
+
+https://www.tusitio.com/success.php?collection_id=[PAYMENT_ID]&collection_status=approved&external_ref
+erence=[EXTERNAL_REFERENCE]&payment_type=credit_card&preference_id=[PREFERENCE_ID]&site_id
+=[SITE_ID]&processing_mode=aggregator&merchant_account_id=null
+
+
+
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -129,7 +138,7 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-<?php
+                                   <?php
 // SDK de Mercado Pago
 require __DIR__ .  '/vendor/autoload.php';
 
@@ -139,7 +148,7 @@ MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
-// Exluimos medios y tipos de pago regueridos, y cantidad mÃ¡xima de cuotas
+// Exluimos medios y tipos de pago regueridos, y cantidad máxima de cuotas
 $preference->payment_methods = array(
   "excluded_payment_methods" => array(
     array("id" => "amex")
@@ -151,17 +160,17 @@ $preference->payment_methods = array(
 );
 
 
-// Crea un Ã­tem en la preferencia y seteamos detalle del producto seleccionado
+// Crea un ítem en la preferencia y seteamos detalle del producto seleccionado
 $item = new MercadoPago\Item();
 $item->id = '1234';
 $item->title = $_POST['title'];
-$item->description = 'Dispositivo mÃ³vil de Tienda e-commerce';
+$item->description = 'Dispositivo móvil de Tienda e-commerce';
 $item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/'; // + $_POST['img'];
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 $preference->items = array($item);
 
-// Creamos un comprador y seteamos sus datos (para mejorar aprobaciÃ³n)
+// Creamos un comprador y seteamos sus datos (para mejorar aprobación)
  $payer = new MercadoPago\Payer();
   $payer->name = 'Lalo';
   $payer->surname = 'Landa';
@@ -193,16 +202,15 @@ $preference->save();
 ?>
 
 
-    <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
 
-<!--
+
 				<form action="/procesar-pago" method="POST">
 				  <script
 				   src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
 				   data-preference-id="<?php echo $preference->id; ?>">
 				  </script>
 				</form>				
--->				
+				
 				
                                 </div>
                             </div>
