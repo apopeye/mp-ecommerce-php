@@ -1,20 +1,12 @@
-
-
-
-https://www.tusitio.com/success.php?collection_id=[PAYMENT_ID]&collection_status=approved&external_ref
-erence=[EXTERNAL_REFERENCE]&payment_type=credit_card&preference_id=[PREFERENCE_ID]&site_id
-=[SITE_ID]&processing_mode=aggregator&merchant_account_id=null
-
-
-
 <!DOCTYPE html>
-<html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     
     <meta name="viewport" content="width=1024">
     <title>Tienda e-commerce</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
+	<script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -126,91 +118,12 @@ erence=[EXTERNAL_REFERENCE]&payment_type=credit_card&preference_id=[PREFERENCE_I
                                         <div class="as-producttile-title">
                                             <h3 class="as-producttile-name">
                                                 <p class="as-producttile-tilelink">
-                                                    <span data-ase-truncate="2"><?php echo $_POST['title'] ?></span>
+                                                    <span data-ase-truncate="2">Tu pago fue acreditado. <?php echo $_POST['title'] ?>, ya es tuyo.</span>
                                                 </p>
 
                                             </h3>
                                         </div>
-                                        <h3 >
-                                            <?php echo $_POST['price'] ?>
-                                        </h3>
-                                        <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
-                                        </h3>
                                     </div>
-                                   <?php
-// SDK de Mercado Pago
-require __DIR__ .  '/vendor/autoload.php';
-
-// Agregamos credenciales 
-MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
-
-// Crea un objeto de preferencia
-$preference = new MercadoPago\Preference();
-
-// Exluimos medios y tipos de pago regueridos, y cantidad máxima de cuotas
-$preference->payment_methods = array(
-  "excluded_payment_methods" => array(
-    array("id" => "amex")
-  ),
-  "excluded_payment_types" => array(
-    array("id" => "redlink")
-  ),
-  "installments" => 6
-);
-
-
-// Crea un ítem en la preferencia y seteamos detalle del producto seleccionado
-$item = new MercadoPago\Item();
-$item->id = '1234';
-$item->title = $_POST['title'];
-$item->description = 'Dispositivo móvil de Tienda e-commerce';
-$item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/'; // + $_POST['img'];
-$item->quantity = $_POST['unit'];
-$item->unit_price = $_POST['price'];
-$preference->items = array($item);
-
-// Creamos un comprador y seteamos sus datos (para mejorar aprobación)
- $payer = new MercadoPago\Payer();
-  $payer->name = 'Lalo';
-  $payer->surname = 'Landa';
-  $payer->email = 'test_user_63274575@testuser.com';
-//  $payer->date_created = "2018-06-02T12:58:41.425-04:00";
-  $payer->phone = array(
-    "area_code" => '11',
-    "number" => '22223333'
-  );
-  $payer->address = array(
-    "street_name" => 'False',
-    "street_number" => 123,
-    "zip_code" => '1111'
-  );  
-
-// Seteamos el external reference para identificar la compra
-$preference->external_reference = 'arielrivero@grupoaras.com.ar';
-
-// Seteamos las back urls
-$preference->back_urls = array(
-    "success" => "https://apopeye-mp-ecommerce-php.herokuapp.com/success.php",
-    "failure" => "https://apopeye-mp-ecommerce-php.herokuapp.com/failure.php",
-    "pending" => "https://apopeye-mp-ecommerce-php.herokuapp.com/pending.php"
-);
-$preference->auto_return = "approved";
-
-$preference->save();
-// echo $preference->id;
-?>
-
-
-
-
-				<form action="/procesar-pago" method="POST">
-				  <script
-				   src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-				   data-preference-id="<?php echo $preference->id; ?>">
-				  </script>
-				</form>				
-				
 				
                                 </div>
                             </div>

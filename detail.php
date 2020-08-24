@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
 
+	<script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -150,6 +151,8 @@ $preference->payment_methods = array(
   "installments" => 6
 );
 
+// Seteamos nuestro integrator ID
+MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
 // Crea un ítem en la preferencia y seteamos detalle del producto seleccionado
 $item = new MercadoPago\Item();
@@ -180,13 +183,14 @@ $preference->items = array($item);
 // Seteamos el external reference para identificar la compra
 $preference->external_reference = 'arielrivero@grupoaras.com.ar';
 
-// Seteamos las back urls
+// Seteamos las back urls y Webhook para notificaciones.
 $preference->back_urls = array(
     "success" => "https://apopeye-mp-ecommerce-php.herokuapp.com/success.php",
     "failure" => "https://apopeye-mp-ecommerce-php.herokuapp.com/failure.php",
     "pending" => "https://apopeye-mp-ecommerce-php.herokuapp.com/pending.php"
 );
 $preference->auto_return = "approved";
+$preference->notification_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/wh_mp.php?source_news=webhooks';
 
 $preference->save();
 // echo $preference->id;
