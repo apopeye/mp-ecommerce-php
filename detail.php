@@ -156,7 +156,7 @@ $item = new MercadoPago\Item();
 $item->id = '1234';
 $item->title = $_POST['title'];
 $item->description = 'Dispositivo móvil de Tienda e-commerce';
-$item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/'; // + $_POST['img'];
+$item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/' . substr($_POST['img'], 1);
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 $preference->items = array($item);
@@ -190,7 +190,6 @@ $preference->auto_return = "approved";
 
 $preference->save();
 // echo $preference->id;
-echo '-' + $_POST['img'] + '-';
 ?>
 
 
