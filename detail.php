@@ -193,6 +193,19 @@ $preference->auto_return = "approved";
 $preference->notification_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/wh_mp.php?source_news=webhooks';
 
 $preference->save();
+// Guardar en BD, preferencia
+							            if (file_exists("datos.txt")){
+									$archivo = fopen("tmp/datos.txt", "a");
+									fwrite($archivo, PHP_EOL . $preference->id);
+									fclose($archivo);
+								    }
+								    else {
+									$archivo = fopen("datos.txt", "w");
+									fwrite($archivo, PHP_EOL . $preference->id);
+									fclose($archivo);
+								    }
+
+
 // echo $preference->id;
 ?>
 
