@@ -193,9 +193,10 @@ $preference->save();
 ?>
 
 
-    <a data-button-label="Pagar la compra" href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
+	<a href="<?php echo $preference->init_point; ?>">Pagar la compra</a> 
+    
 
-data-button-label="Comprar"
+
                                 </div>
                             </div>
                         </div>
