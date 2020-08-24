@@ -206,7 +206,7 @@ $preference->save();
 								    }
 
 
-// echo $preference->id;
+echo $preference->id;
 ?>
 
 
