@@ -135,7 +135,7 @@
 require __DIR__ .  '/vendor/autoload.php';
 echo 'Debug';
 
-                                    
+?>                            
                                     
 				<form action="/procesar-pago" method="POST">
 				  <script
