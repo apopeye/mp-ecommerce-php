@@ -190,7 +190,7 @@ $preference->auto_return = "approved";
 
 $preference->save();
 // echo $preference->id;
-echo $_POST['img'];
+echo '-' + $_POST['img'] + '-';
 ?>
 
 
