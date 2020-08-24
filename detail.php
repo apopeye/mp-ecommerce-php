@@ -156,11 +156,10 @@ $item = new MercadoPago\Item();
 $item->id = '1234';
 $item->title = $_POST['title'];
 $item->description = 'Dispositivo móvil de Tienda e-commerce';
-$item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/' . substr($_POST['img'], 1);
+$item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com' . substr($_POST['img'], 1);
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 $preference->items = array($item);
-echo $item->picture_url;
 
 // Creamos un comprador y seteamos sus datos (para mejorar aprobación)
  $payer = new MercadoPago\Payer();
@@ -195,17 +194,12 @@ $preference->save();
 
 
 
-	<!doctype html>
-	<html>
-	  <head>
-	    <title>Pagar</title>
-	  </head>
-	  <body>
-	    <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a> 
-	  </body>
-	</html>
-
-	
+	<form action="/procesar-pago" method="POST">
+	  <script
+	   src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+	   data-preference-id="<?php echo $preference->id; ?>">
+	  </script>
+	</form>
     
 
 
