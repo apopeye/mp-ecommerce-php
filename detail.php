@@ -155,7 +155,7 @@ $preference->payment_methods = array(
 $item = new MercadoPago\Item();
 $item->id = 1234
 $item->title = $_POST['title'];
-$item->description = "Dispositivo móvil de Tienda e-commerce";
+$item->description = 'Dispositivo móvil de Tienda e-commerce';
 $item->picture_url = $_POST['img'];
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
@@ -163,22 +163,22 @@ $preference->items = array($item);
 
 // Creamos un comprador y seteamos sus datos (para mejorar validez)
  $payer = new MercadoPago\Payer();
-  $payer->name = "Lalo";
-  $payer->surname = "Landa";
-  $payer->email = "test_user_63274575@testuser.com";
+  $payer->name = 'Lalo';
+  $payer->surname = 'Landa';
+  $payer->email = 'test_user_63274575@testuser.com';
 //  $payer->date_created = "2018-06-02T12:58:41.425-04:00";
   $payer->phone = array(
-    "area_code" => "11",
-    "number" => "22223333"
+    "area_code" => '11'
+    "number" => '22223333'
   );
   $payer->address = array(
-    "street_name" => "False",
+    "street_name" => 'False',
     "street_number" => 123,
-    "zip_code" => "1111"
+    "zip_code" => '1111'
   );  
 
 // Seteamos el external reference para identificar la compra
-$preference->external_reference = "arielrivero@grupoaras.com.ar"
+$preference->external_reference = 'arielrivero@grupoaras.com.ar';
 $preference->save();
 // echo $preference->id;
 ?>
