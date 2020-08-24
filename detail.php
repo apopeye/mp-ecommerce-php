@@ -172,7 +172,7 @@ $preference->items = array($item);
   $payer->email = 'test_user_63274575@testuser.com';
 //  $payer->date_created = "2018-06-02T12:58:41.425-04:00";
   $payer->phone = array(
-    "area_code" => '11'
+    "area_code" => '11',
     "number" => '22223333'
   );
   $payer->address = array(
