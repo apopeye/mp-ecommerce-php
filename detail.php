@@ -160,6 +160,7 @@ $item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/' . substr(
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 $preference->items = array($item);
+echo $item->picture_url;
 
 // Creamos un comprador y seteamos sus datos (para mejorar aprobación)
  $payer = new MercadoPago\Payer();
