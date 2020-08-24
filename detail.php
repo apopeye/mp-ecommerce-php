@@ -153,7 +153,7 @@ $preference->payment_methods = array(
 
 // Crea un ítem en la preferencia y seteamos detalle del producto seleccionado
 $item = new MercadoPago\Item();
-$item->id = 1234;
+$item->id = '1234';
 $item->title = $_POST['title'];
 $item->description = 'Dispositivo móvil de Tienda e-commerce';
 $item->picture_url = $_POST['img'];
