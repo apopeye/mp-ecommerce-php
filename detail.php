@@ -150,13 +150,13 @@ $preference->payment_methods = array(
   ),
   "installments" => 6
 );
-
+echo 'Debug';
 // Crea un ítem en la preferencia y seteamos detalle del producto seleccionado
 $item = new MercadoPago\Item();
 $item->id = '1234';
 $item->title = $_POST['title'];
 $item->description = 'Dispositivo móvil de Tienda e-commerce';
-$item->picture_url = $_POST['img'];
+$item->picture_url = 'https://apopeye-mp-ecommerce-php.herokuapp.com/' + $_POST['img'];
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 $preference->items = array($item);
