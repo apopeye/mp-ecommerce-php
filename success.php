@@ -6,7 +6,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
-	<script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
+	<script src="https://www.mercadopago.com/v2/security.js" view=""></script>
 
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -119,6 +119,21 @@
                                             <h3 class="as-producttile-name">
                                                 <p class="as-producttile-tilelink">
                                                     <span data-ase-truncate="2">Tu pago fue acreditado. <?php echo $_POST['title'] ?>, ya es tuyo.</span>
+                                                    <span data-ase-truncate="2">
+                                                    <?php
+                                                    	echo "ID Pago: " . $collection_id;
+							echo "Status: " . $collection_status;
+							echo "Referencia externa: " . $external_reference;
+							echo "Tipo de pago: " . $payment_type;
+							echo "ID Preferencia: " . $preference_id;
+							echo "ID Sitio: " . $site_id;
+							echo "Modo proc: " . $processing_mode;
+							echo "ID Cuenta vendedor: " . $merchant_account_id;
+                                                    ?>
+                                                    
+                                                    </span>
+                                                    
+
                                                 </p>
 
                                             </h3>
